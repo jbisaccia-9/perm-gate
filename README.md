@@ -1,5 +1,7 @@
 # perm-gate
 
+[![ci](https://github.com/jbisaccia-9/perm-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/jbisaccia-9/perm-gate/actions) · [captured results](RESULTS.md)
+
 **Prompt instructions are requests. Permissions are guarantees. This repo
 proves the difference with a test suite.**
 
