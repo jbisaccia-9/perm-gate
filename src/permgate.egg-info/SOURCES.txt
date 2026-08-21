@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/permgate/__init__.py
+src/permgate/__main__.py
+src/permgate/agent.py
+src/permgate/gate.py
+src/permgate/store.py
+src/permgate.egg-info/PKG-INFO
+src/permgate.egg-info/SOURCES.txt
+src/permgate.egg-info/dependency_links.txt
+src/permgate.egg-info/requires.txt
+src/permgate.egg-info/top_level.txt
+tests/test_permgate.py

@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: permgate
+Version: 0.1.0
+Summary: Prompt instructions are requests; permissions are guarantees - proven by test suite
+Requires-Python: >=3.9
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
