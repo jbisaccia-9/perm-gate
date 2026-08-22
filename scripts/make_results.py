@@ -12,7 +12,7 @@ import subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PY = str(ROOT / ".venv" / "bin" / "python")
 
-COMMANDS = [("Unit tests", ["-m", "pytest", "-q"], False), ("Permission-layer enforcement: zero leaks required", ["-m", "permgate", "gate", "permission"], False), ("Prompt-layer enforcement: failure demonstrated", ["-m", "permgate", "gate", "prompt"], False)]
+COMMANDS = [("Unit tests", ["-m", "pytest", "-q"], False), ("Permission-layer enforcement: zero leaks required", ["-m", "permgate", "gate", "permission"], False), ("Prompt-layer enforcement: failure demonstrated", ["-m", "permgate", "gate", "prompt"], False), ("Braintrust-shaped eval suite", ["-m", "permgate", "suite"], False)]
 
 out = [f"# Results\n",
        f"Generated {datetime.date.today()} by `scripts/make_results.py` — "

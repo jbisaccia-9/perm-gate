@@ -9,5 +9,6 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install -e ".[dev]"
       - run: pytest -q
+      - run: python -m permgate suite
       - run: python -m permgate gate permission
       - run: python -m permgate gate prompt
