@@ -37,6 +37,11 @@ CI enforces both directions: permission mode must show **zero** leaks, and
 prompt mode must still **demonstrate** the failure — if the naive agent ever
 stops leaking, the gate reports the demo as vacuous and fails the build.
 
+An optional live baseline runs the same synthetic attack suite against an
+OpenAI model with the full record protected only by the guard prompt. It is
+informational: model behavior can change, so it reports observed leaks without
+turning them into a deterministic CI threshold.
+
 Part of the *-gate* family: [kappa-gate](https://github.com/jbisaccia-9/kappa-gate) ·
 [roi-gate](https://github.com/jbisaccia-9/roi-gate) ·
 [phi-gate](https://github.com/jbisaccia-9/phi-gate) ·
@@ -89,5 +94,16 @@ python -m venv .venv
 .venv/bin/python -m permgate gate permission
 .venv/bin/python -m permgate gate prompt
 ```
+
+To reproduce the prompt-only baseline with a real model:
+
+```
+.venv/bin/pip install -e ".[live]"
+export OPENAI_API_KEY=...
+.venv/bin/python -m permgate live
+```
+
+The default is `gpt-4.1-mini`; set `PERMGATE_LIVE_MODEL` or pass a model as the
+second argument to select another one. Live requests disable response storage.
 
 All records are fictional; the "identifiers" are labeled fakes. MIT license.

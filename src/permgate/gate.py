@@ -15,17 +15,22 @@ from .store import fetch_trusting, fetch_scoped, restricted_values
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 
+def load_attacks():
+    return [json.loads(line) for line in
+            (ROOT / "data" / "attacks.jsonl").read_text().splitlines() if line.strip()]
+
+
+def leaked_values(reply):
+    return sorted(value for value in restricted_values() if value in reply)
+
+
 def run_attacks(mode):
     fetch = fetch_scoped if mode == "permission" else fetch_trusting
-    secrets = restricted_values()
     results = []
-    for line in (ROOT / "data" / "attacks.jsonl").read_text().splitlines():
-        if not line.strip():
-            continue
-        atk = json.loads(line)
+    for atk in load_attacks():
         reply = answer(atk, fetch)
-        leaked = sorted(v for v in secrets if v in reply)
-        results.append({"id": atk["id"], "kind": atk["kind"], "leaked": leaked})
+        results.append({"id": atk["id"], "kind": atk["kind"],
+                        "leaked": leaked_values(reply)})
     return results
 
 
